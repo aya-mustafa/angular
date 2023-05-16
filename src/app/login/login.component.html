@@ -1,0 +1,24 @@
+<div class="container mt-5">
+    <form  #loginForm="ngForm"  (ngSubmit)="login(loginForm)">
+        <h1 class="mb-4">Login Form</h1>
+            <div class="form-group mb-3">
+                <label for="" class="mb-2">Email:</label>
+                <input required pattern="^[a-z]{3,10}[0-9]{0-5}@gmail.com|@yahoo.com" ngModel class="form-control" name="userEmail" #userEmail="ngModel">
+                <div *ngIf="userEmail.touched">
+                    <p *ngIf="userEmail.errors?.['required']" class="text-danger mt-2">Email is required</p>
+                    <p *ngIf="userEmail.errors?.['pattern']" class="text-danger mt-2">Email not valid</p>
+                </div>
+            </div>
+            <div class="form-group mb-3">
+                <label for="" class="mb-2">Password:</label>
+                <input required pattern="[a-z]{1}[0-9]{3,8}" type="password" ngModel class="form-control" name="userPassword" #userPassword="ngModel">
+                 <div *ngIf="userPassword.touched">
+                    <p *ngIf="userPassword.errors?.['required']" class="text-danger mt-2">password is required</p>
+                    <p *ngIf="userPassword.errors?.['pattern']" class="text-danger mt-2">password start with samll letter then from 3 to 8 number</p>
+                </div>
+            </div>
+      <button [disabled]="loginForm.invalid" type="submit" class=" mb-2 btn btn-info text-light">Login</button>
+    </form>
+    <a routerLink="/register" class="text-decoration-none">you don't have account plz register</a>
+</div>
+
