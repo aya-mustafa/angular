@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<div class="container">
+  
+    <div class="row">
+      <h1 class="text-center mt-5">Products</h1>
+        <div class="col-md-3 col-3 p-3" *ngFor="let item of items">
+            <div class="card" style="height:400px">
+                <img class="card-img-top"  style="height:200px" [src] ="item.thumbnail" alt="Card image cap">
+                <div class="card-body">
+                  <h6 class="text-danger">{{item.title}}</h6>
+                  <p>{{item.price| currency:'EGP'}}</p>
+                  <p>{{item.stock|stock}} </p>
+                  <p>{{item.createdAt| date : 'MMMM YYYY'}}</p>
+                  <button class="btn btn-danger" (click)="deleteItem(item)">Delete</button>
+                </div>
+              </div>
+        </div>
+    </div>
+  </div>
